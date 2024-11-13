@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import File Output CSS-->
+    <link rel="stylesheet" href="./src/output.css">
+    <title>JavaScripts Bài Tập B5</title>
+</head>
+
+<body class="bg-blue-50 flex items-center justify-center min-h-screen">
+    <div class="flex max-w-4xl w-full bg-white rounded-lg shadow-lg overflow-hidden">
+        <!-- Sidebar Js -->
+        <div class="w-1/4 bg-gray-100 p-4">
+            <ul class="space-y-4">
+                <li>
+                    <button onclick="showBai(1)"
+                        class="tab-button w-full text-center py-2 px-4 bg-yellow-500 text-black rounded-lg hover:bg-blue-600">
+                        <span id="icon1" class="closed-book"></span>Bài
+                        1</button>
+                </li>
+                <li>
+                    <button onclick="showBai(2)"
+                        class="tab-button w-full text-center py-2 px-4 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
+                        <span id="icon2" class="closed-book"></span>Bài
+                        2</button>
+                </li>
+                <li>
+                    <button onclick="showBai(3)"
+                        class="tab-button w-full text-center py-2 px-4 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
+                        <span id="icon3" class="closed-book"></span>Bài
+                        3</button>
+                </li>
+                <li>
+                    <button onclick="showBai(4)"
+                        class="tab-button w-full text-center py-2 px-4 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
+                        <span id="icon4" class="closed-book"></span>Bài
+                        4</button>
+                </li>
+                <!-- <li>
+                    <button onclick="showBai(5)"
+                        class="tab-button w-full text-center py-2 px-4 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
+                        <span id="icon5" class="closed-book"></span>Bài
+                        5</button>
+                </li> -->
+            </ul>
+        </div>
+        <!-- Main Content -->
+        <!-- Bài 1: Quản lý tuyển sinh -->
+        <div id="bai1" class="w-3/4 p-8 bai-tap">
+            <div class="bg-yellow-100 p-4 rounded-lg border-l-4 border-yellow-500 mb-6">
+                <p class="text-sm text-yellow-700 font-semibold">🔥[BÀI_TẬP] BÀI TẬP JS BUỔI 5 || Deadline
+                    13/11/2024🔥
+                </p>
+            </div>
+            <h1 class="text-2xl font-semibold mb-4 flex items-center">
+                <span class="text-yellow-500 text-3xl mr-2">🏫</span> Quản lý tuyển sinh
+            </h1>
+            <div class="bg-blue-100 p-4 rounded-lg mb-6">
+                <h2 class="text-lg font-semibold mb-2">💡 Gợi ý:</h2>
+                <ul class="list-disc list-inside text-sm text-gray-600">
+                    <li>Điểm chuẩn của hội đồng các bạn tự nhập thêm. Điểm chuẩn của 3 môn thường tối đa 30đ.
+                        Nên có thể lấy các điểm chuẩn như sau: 30,25,29</li>
+                    <li>Ô nhập khu vực, đối tượng có thể tạo bằng input, dropdown hoặc radio.
+                        Nếu không thuộc khu vực hoặc đối tượng trong danh sách thì điểm khu vực và điểm đối tượng sẽ là
+                        0</li>
+                    <li>Nếu có 1 trong 3 môn bị điểm 0 thì lặp tức cho rớt không cần kiểm tra tổng điểm có lớn hơn hoặc
+                        bằng điểm chuẩn hay không
+                    </li>
+                </ul>
+            </div>
+
+            <!--Form nhập để tính điểm tuyển sinh-->
+            <form>
+                <!-- Hàng đầu tiên -->
+                <div class="flex items-center justify-between gap-3">
+                    <!-- Điểm chuẩn -->
+                    <div class="inputGroup">
+                        <input type="number" id="diemChuan" required autocomplete="off">
+                        <label for="diemChuan">Điểm chuẩn</label>
+                    </div>
+
+                    <!-- Chọn khu vực (dropdown) -->
+                    <div class="inputGroup">
+                        <select id="khuVuc" required>
+                            <option value="" disabled selected>Chọn khu vực</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                    </div>
+
+                    <!-- Chọn đối tượng (dropdown) -->
+                    <div class="inputGroup">
+                        <select id="doiTuong" required>
+                            <option value="" disabled selected>Chọn đối tượng</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Hàng thứ hai -->
+                <div class="flex items-center justify-between gap-3">
+                    <!-- Điểm môn thứ 1 -->
+                    <div class="inputGroup">
+                        <input type="number" id="diemMon1" required autocomplete="off">
+                        <label for="diemMon1">Điểm môn thứ 1</label>
+                    </div>
+
+                    <!-- Điểm môn thứ 2 -->
+                    <div class="inputGroup">
+                        <input type="number" id="diemMon2" required autocomplete="off">
+                        <label for="diemMon2">Điểm môn thứ 2</label>
+                    </div>
+
+                    <!-- Điểm môn thứ 3 -->
+                    <div class="inputGroup">
+                        <input type="number" id="diemMon3" required autocomplete="off">
+                        <label for="diemMon3">Điểm môn thứ 3</label>
+                    </div>
+                </div>
+
+                <!-- Nút xử lý kết quả -->
+                <button type="button" class="button mt-4" onclick="TinhDiemThi()"> <!-- Gắn sự kiện click cho button -->
+                    Tính Điểm Thi
+                </button>
+            </form>
+            <!--kết quả sẽ hiển thị ở đây-->
+            <div id="result-container-diemthi">
+                <div class="mt-5 p-4 bg-green-100 rounded-lg text-green-700 font-semibold">
+                    <p>
+                        👉<span id="result-diemthi"></span>
+                    </p>
+                </div>
+            </div>
+            <script src="./js/TuyenSinh.js">
+            </script>
+        </div>
+        <!-- Bài 2: Tính tiền điện -->
+        <div id="bai2" class="w-3/4 p-8 bai-tap">
+            <div class="bg-yellow-100 p-4 rounded-lg border-l-4 border-yellow-500 mb-6">
+                <p class="text-sm text-yellow-700 font-semibold">🔥[BÀI_TẬP] BÀI TẬP JS BUỔI 5 || Deadline
+                    13/11/2024🔥
+                </p>
+            </div>
+            <h1 class="text-2xl font-semibold mb-4 flex items-center">
+                <span class="text-yellow-500 text-3xl mr-2">🔋</span> Tính tiền điện
+            </h1>
+            <div class="bg-blue-100 p-4 rounded-lg mb-6">
+                <h2 class="text-lg font-semibold mb-2">💡 Gợi ý:</h2>
+                <p>Viết chương trình nhập vào thông tin tiêu thụ điện (Tên + Số Kw)
+                    <br>
+                    Tính và xuất tiền trả theo quy tắc:
+                </p>
+                <ul class="list-disc list-inside text-sm text-gray-600">
+                    <li>50Kw đầu: 500d/Kw</li>
+                    <li>50Kw kế: 650d/Kw</li>
+                    <li>100Kw kế: 850d/Kw
+                    </li>
+                    <li>150Kw kế: 1100d/Kw</li>
+                    <li>Còn lại: 1300d/Kw</li>
+                </ul>
+            </div>
+            <!--Form nhập tính tiền điện-->
+            <form>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="inputGroup">
+                        <input type="text" id="NhapHoTen" required autocomplete="off">
+                        <label for="NhapHoTen">Nhập họ tên</label>
+                    </div>
+                    <div class="inputGroup">
+                        <input type="number" id="NhapSoKW" required autocomplete="off">
+                        <label for="NhapSoKW">Nhập số Kw</label>
+                    </div>
+                </div>
+                <!-- Nút xử lý kết quả -->
+                <button type="button" class="button mt-4" onclick="TinhTienDien()">
+                    <!-- Gắn sự kiện click cho button -->
+                    Tính Tiền Điện
+                </button>
+            </form>
+            <!--kết quả sẽ hiển thị ở đây-->
+            <div id="result-container-TienDien">
+                <div class="mt-5 p-4 bg-green-100 rounded-lg text-green-700 font-semibold">
+                    <p>
+                        👉<span id="result-TienDien"></span>
+                    </p>
+                </div>
+            </div>
+            <script src="./js/TinhTienDien.js"></script>
+        </div>
+        <!-- Bài 3: Tính thuế thu nhập cá nhân -->
+        <div id="bai3" class="w-3/4 p-8 bai-tap">
+            <div class="bg-yellow-100 p-4 rounded-lg border-l-4 border-yellow-500 mb-6">
+                <p class="text-sm text-yellow-700 font-semibold">🔥[BÀI_TẬP] BÀI TẬP JS BUỔI 5 || Deadline
+                    13/11/2024🔥
+                </p>
+            </div>
+            <h1 class="text-2xl font-semibold mb-4 flex items-center">
+                <span class="text-yellow-500 text-3xl mr-2">💰</span> Tính thuế thu nhập cá nhân
+            </h1>
+            <div class="bg-blue-100 p-4 rounded-lg mb-6">
+                <h2 class="text-lg font-semibold mb-2">💡 Gợi ý:</h2>
+                <ul class="list-disc list-inside text-sm text-gray-600">
+                    <li>Tổng thu nhập năm các bạn tự nhập thêm. Giả sử 1 tháng thu nhập 10tr thì 1 năm sẽ là 10 x 12 =
+                        120tr => các bạn sẽ nhập 120000000</li>
+                    <li>Demo hiện tại đang tính % thuế theo điều kiện mà thu nhập chịu thuế rơi vào. Vd: thu nhập chịu
+                        thuế là 110tr thì tính 10% của 110tr => 110tr * 0.1</li>
+                    <li>Do đề bài không ghi rõ yêu cầu tính thuế nên cũng có thể tính theo cách chia ra từng đoạn thuế
+                        giống bài tính tiền grab. Vd: 110tr => 60tr *0.05 + (110tr-60tr) * 0.1
+                    </li>
+                    <li>Sử dụng input có type number thì khi nhập 120000000, có thể nhập ngắn gọn thành 120e+6</li>
+                    <li>Đối với các con số hàng triệu có nhiều số 0, có thể viết ngắn gọn trong code như sau:
+                        4tr => 4000000 => 4e+6</li>
+                </ul>
+            </div>
+            <!--Form nhập tính thuế thu nhập cá nhân-->
+            <form>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="inputGroup">
+                        <input type="text" id="ThemHoTen" required autocomplete="off">
+                        <label for="ThemHoTen">Nhập họ tên</label>
+                    </div>
+                    <div class="inputGroup">
+                        <input type="number" id="TongThuNhap" required autocomplete="off">
+                        <label for="TongThuNhap">Tổng thu nhập năm</label>
+                    </div>
+                    <div class="inputGroup">
+                        <input type="number" id="NguoiPhuThuoc" required autocomplete="off">
+                        <label for="NguoiPhuThuoc">Số người phụ thuộc</label>
+                    </div>
+                </div>
+                <!-- Nút xử lý kết quả -->
+                <button type="button" class="button mt-4" onclick="TinhThue()">
+                    <!-- Gắn sự kiện click cho button -->
+                    Tính Thuế
+                </button>
+            </form>
+            <!--kết quả sẽ hiển thị ở đây-->
+            <div id="result-container-TinhThue">
+                <div class="mt-5 p-4 bg-green-100 rounded-lg text-green-700 font-semibold">
+                    <p>
+                        👉<span id="result-TinhThue"></span>
+                    </p>
+                </div>
+            </div>
+            <script src="./js/TinhThue.js"></script>
+        </div>
+        <!-- Bài 4: Tính tiền cáp -->
+        <div id="bai4" class="w-3/4 p-8 bai-tap">
+            <div class="bg-yellow-100 p-4 rounded-lg border-l-4 border-yellow-500 mb-6">
+                <p class="text-sm text-yellow-700 font-semibold">🔥[BÀI_TẬP] BÀI TẬP JS BUỔI 5 || Deadline
+                    13/11/2024🔥
+                </p>
+            </div>
+            <h1 class="text-2xl font-semibold mb-4 flex items-center">
+                <span class="text-yellow-500 text-3xl mr-2">🕸️</span>  Tính tiền cáp
+            </h1>
+            <div class="bg-blue-100 p-4 rounded-lg mb-6">
+                <h2 class="text-lg font-semibold mb-2">💡 Gợi ý:</h2>
+                <ul class="list-disc list-inside text-sm text-gray-600">
+                    <li>Sử dụng event onchange của dropdown để xử lý ẩn hiện cho ô nhập số kết nối khi chọn loại khách hàng: Onchange</li>
+                    <li>Đối với loại khách hàng Doanh Nghiệp, tổng 10 kết nối đầu là 75$
+                        <br>
+                        => đây là giá trọn gói, nếu doanh nghiệp lắp đặt số kết nối nhỏ hơn 10 thì vẫn phải đóng 75$.
+                        <br>
+                        Vd: 6 kết nối thì vẫn sẽ cộng 75$ vào tổng tiền.
+                        <br>
+                        => Nếu lắp trên 10 kết nối thì kết nối thứ 11 trở đi sẽ tính 5$/kết nối.</li>
+                </ul>
+            </div>
+             <!--Form nhập tính tiền cáp-->
+             <form>
+                <div class="flex items-center justify-center gap-3">
+                     <!-- Chọn loại khách hàng (dropdown) -->
+                     <div class="inputGroup">
+                        <select id="LoaiKH" onchange="myFunction()" required>
+                            <option value="" disabled selected>Chọn loại khách hàng</option>
+                            <option value="A">Nhà Dân</option>
+                            <option value="B">Doanh Nghiệp</option>
+                        </select>
+                    </div>
+                    <div class="inputGroup">
+                        <input type="number" id="MaKH" required autocomplete="off">
+                        <label for="MaKH">Nhập Mã KH</label>
+                    </div>
+                    <div class="inputGroup" id="inputKetNoi" style="display:none;">
+                        <input type="number" id="SoKetNoi" autocomplete="off">
+                        <label for="SoKetNoi">Số kết nối</label>
+                    </div>
+                    <div class="inputGroup">
+                        <input type="number" id="KenhCaoCap" required autocomplete="off">
+                        <label for="KenhCaoCap">Số kênh c.cấp</label>
+                    </div>
+                </div>
+                <!-- Nút xử lý kết quả -->
+                <button type="button" class="button mt-4" onclick="TinhTienCap()">
+                    <!-- Gắn sự kiện click cho button -->
+                    Tính Tiền Cáp
+                </button>
+            </form>
+            <!--kết quả sẽ hiển thị ở đây-->
+            <div id="result-container-TinhTienCap">
+                <div class="mt-5 p-4 bg-green-100 rounded-lg text-green-700 font-semibold">
+                    <p>
+                        👉<span id="result-TinhTienCap"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script src="./js/TinhTienCap.js"></script>
+    </div>
+    <script src="./js/showBai.js">
+    </Script>
+</body>
+
+</html>

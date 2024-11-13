@@ -19,6 +19,16 @@ Trên 210 đến 384 => Thuế suất (%) 20
 Trên 384 đến 624 => Thuế suất (%) 25
 Trên 624 đến 960 =>Thuế suất (%) 30
 Trên 960 => Thuế suất (%) 35
+Input:
+- Họ Tên, Tổng thu nhập năm, Số người phụ thuộc
+Progressing:
+- Kiểm tra nếu nhập số không hợp lệ
+- Xử lí tính thu nhập chịu thuế
+- Kiểm tra nếu thu nhập chịu thuế <= 0 thì không phải đóng thuế
+- Xác định thuế suất theo thu nhập chịu thuế
+- Tính thuế thu nhập cá nhân phải trả
+Output:
+- Hiển thị kết quả ra màn hình: Họ Tên, Tiền thuế thu nhập cá nhân
  */
 
 /**____________________________________________________ */

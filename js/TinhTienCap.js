@@ -19,6 +19,16 @@ Nhà dân và doanh nghiệp. Có 2 mức giá tính tiền cáp:
 ❖ Chương trình cho phép nhập vào Mã khách hàng, loại khách hàng, số kết nối, số kênh
 cao cấp. Nếu chọn loại khách hàng là Doanh nghiệp ô nhập số kết nối sẽ hiện lên, nếu
 chọn loại khách hàng là nhà dân thì ô nhập kết nối sẽ ẩn đi hoặc disabled
+Input:
+- Chọn loại khách hàng
+- Nhập Mã Kh
+- Nhập số kênh cao cấp
+- Nếu là doanh nghiệp -> nhập thêm số kết nối
+Progressing:
+- xử lý khi thay đổi loại khách hàng
+- Tính tiền cáp
+Output:
+- Hiển thị kết quả tính tiền
 */
 
 /**___________________________________ */
